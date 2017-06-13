@@ -42,8 +42,8 @@ one command to generate https website on nginx
 
 
 
-##  inspired
+###  inspired
 
 [Let's Encrypt](https://letsencrypt.org)
 
-[[diafygi](https://github.com/diafygi)/acme-tiny]()
+[diafygi/acme-tiny](https://github.com/diafygi/acme-tiny)
