@@ -22,7 +22,8 @@ do
     domain_length=$(($domain_length+1))
 done
 sign_domain_str=${sign_domain_str:0:${#sign_domain_str}-1}
-echo "please input your website complete absolute path"
+echo "please input your website absolute path"
+echo "if it's not absolute path,it will be preappend current dir"
 read -p "> " web_dir
 if [[ ! "$web_dir" == /* ]]; then
 	web_dir=$(pwd)"/"$web_dir
@@ -38,12 +39,15 @@ if [[ -z "$nginx_config_dir" ]]; then
 fi
 echo -e "\n"
 cat << EOF
-please confirm the information is correct
-web_dir:$web_dir
-domain:$web_domains
-nginx_config_dir:$nginx_config_dir
+your configuration are as follows
+
+web directory: $web_dir
+web domain: $web_domains
+nginx config dir: $nginx_config_dir
+
+please input the number to confirm these information
 1):confirm
-2):quit
+2):not correct,I want to quit
 EOF
 read -p "> " confirm
 if [[  $confirm -eq 2 ]]; then
@@ -118,10 +122,11 @@ chown -R $current_user:$current_user_group $web_dir
 chown $current_user:$current_user_group $nginx_config_dir"/conf.d/"$nginx_web_config_file
 chmod -R 755 $web_dir
 service nginx restart
+echo -e "\n\n"
 cat << EOF
 generate https website succssfully
 your website directory is $web_dir
-your nginx config file is $nginx_config_dir"/conf.d/"$nginx_web_config_file
+your nginx config file is $nginx_config_dir/conf.d/$nginx_web_config_file
 you can visit your website through these domains
 EOF
 for web_domain in ${web_domains[@]}
