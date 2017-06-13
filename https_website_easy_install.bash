@@ -11,6 +11,7 @@ echo "your server ip is:${PUBLIC_IP}"
 echo "please input your website domain which has been resolved to $PUBLIC_IP"
 echo "if you want to binding more than one domain,you can split them using space"
 read -p "> " web_domains
+# TODO check the domain resolve dig +short domain
 domain_length=0
 sign_domain_str=''
 web_first_domain=$(echo $web_domains|tr -s [:blank:]|cut -d ' ' -f 1)
@@ -120,7 +121,8 @@ service nginx restart
 cat << EOF
 generate https website succssfully
 your website directory is $web_dir
-you can visit your website through
+your nginx config file is $nginx_config_dir"/conf.d/"$nginx_web_config_file
+you can visit your website through these domains
 EOF
 for web_domain in ${web_domains[@]}
 do
