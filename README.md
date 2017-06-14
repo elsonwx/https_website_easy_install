@@ -8,7 +8,7 @@ one command to generate https website on nginx
   - ubuntu/debian
 
     ````
-    $ sudo apt-get install nginx
+    $ sudo apt-get update && sudo apt-get install nginx
     ````
 
   - centos/redhat
