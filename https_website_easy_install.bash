@@ -27,12 +27,12 @@ do
 done
 sign_domain_str=${sign_domain_str:0:${#sign_domain_str}-1}
 echo "please input your website absolute path"
-echo "if it's not absolute path,it will be preappend current dir"
+echo "if your input is not absolute path,the current directory will be preappend"
 read -p "> " web_dir
 if [[ ! "$web_dir" == /* ]]; then
 	web_dir=$(pwd)"/"$web_dir
 fi
-echo $web_dir
+echo "your web directory will be "$web_dir
 mkdir -p ${web_dir}"/certificate/challenges"
 chmod -R 755 $web_dir
 web_first_parent_dir="/"$(echo $web_dir|cut -d "/" -f2)
