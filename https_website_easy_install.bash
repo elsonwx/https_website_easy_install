@@ -31,6 +31,8 @@ fi
 echo $web_dir
 mkdir -p ${web_dir}"/certificate/challenges"
 chmod -R 755 $web_dir
+web_first_parent_dir="/"$(echo $web_dir|cut -d "/" -f2)
+chmod -R o+x $web_first_parent_dir
 echo "please input the nginx config dir"
 echo "you can carrige return if it's default /etc/nginx"
 read -p "> " nginx_config_dir
