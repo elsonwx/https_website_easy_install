@@ -65,7 +65,7 @@ openssl genrsa 4096 > account.key
 # generate a domain private key
 openssl genrsa 4096 > domain.key
 if [[ $domain_length -gt 1 ]]; then
-    openssl req -new -sha256 -key domain.key -subj "/" -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "[SAN]\nsubjectAltName=$sign_domain_str")) > domain.csr
+    openssl req -new -sha256 -key domain.key -subj "/" -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "[SAN]\nsubjectAltName=$sign_domain_str")) > domain.csr || openssl req -new -sha256 -key domain.key -subj "/" -reqexts SAN -config <(cat /etc/pki/tls/openssl.cnf <(printf "[SAN]\nsubjectAltName=$sign_domain_str")) > domain.csr
 else
     openssl req -new -sha256 -key domain.key -subj "/CN=$web_domains" > domain.csr
 fi
