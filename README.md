@@ -1,7 +1,7 @@
 # https_website_easy_install
 one command to generate https website on nginx
 
-## Usage
+### Usage
 
 - install nginx on linux
 
@@ -51,6 +51,8 @@ one command to generate https website on nginx
 
 
 ### Issues
+
+#### Error: establish the http website failed,please view the issue of github doc
 
 SELinux cause the nginx 403 error
 
