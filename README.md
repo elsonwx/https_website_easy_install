@@ -14,7 +14,7 @@ one command to generate https website on nginx.All you need to do is input your 
   - centos/redhat
 
     ```
-    $ sudo yum update && sudo yum install nginx
+    $ sudo yum update && sudo yum -y install nginx
     ```
 
     ​
