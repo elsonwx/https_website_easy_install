@@ -40,7 +40,7 @@ one command to generate https website on nginx
 
 SELinux cause the nginx 403 error
 
-The SELinux mode may be opened in centos/redhat 6.6 or later,you will failed in the first step to establish a http website.you can check whethe the SELinux is enabled in your server by exec `sestatus -v` command.this error can be solved by closing the SELinux simply,you can close the SELinux and restart your server
+The SELinux mode may be opened in centos/redhat 6.6 and later,you will fail in the first step to establish a http website.you can check whethe the SELinux is enabled in your server by exec `sestatus -v` command.this error can be solved by closing the SELinux simply,you can close the SELinux and restart your server
 
 ```
 $ sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
