@@ -3,7 +3,7 @@ one command to generate https website on nginx.All you need to do is input your 
 
 ### Usage
 
-- Step 1:install nginx on linux
+- Step 1: install nginx on linux
 
   - ubuntu/debian
 
@@ -14,12 +14,12 @@ one command to generate https website on nginx.All you need to do is input your 
   - centos/redhat
 
     ```
-    $ sudo yum install nginx
+    $ sudo yum update && sudo yum install nginx
     ```
 
     ​
 
-- Step 2:download this script
+- Step 2: download this script
 
   ``` 
   $ wget https://git.io/vHQLm -O https_website_easy_install.bash
@@ -27,7 +27,7 @@ one command to generate https website on nginx.All you need to do is input your 
 
   ​
 
-- Step 3:generate https website on your linux server
+- Step 3: generate https website on your linux server
 
   ```
   $ sudo bash https_website_easy_install.bash
