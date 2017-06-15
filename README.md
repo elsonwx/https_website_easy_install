@@ -32,7 +32,7 @@ one command to generate https website on nginx.All you need to do is input your 
 
 ### Issues
 
-#### Error: establish the http website failed,please view the issue of github doc
+#### Error: create the http website failed,please view the issue of github doc
 
 SELinux cause the nginx 403 error
 
