@@ -13,7 +13,7 @@ check_ip "$PUBLIC_IP" || exiterr "Cannot find your server ip address"
 
 echo "your server ip is:${PUBLIC_IP}"
 echo "please input your website domain name which has been resolved to $PUBLIC_IP"
-echo "if you want to binding more than one domain name,you can split them using space"
+echo "if you want to bind mutiple domain names,you can split them using space"
 read -p "> " web_domains
 # TODO check the domain resolve dig +short domain
 domain_length=0
