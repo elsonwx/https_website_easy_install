@@ -139,6 +139,16 @@ for web_domain in ${web_domains[@]}
 do
     echo https://$web_domain
 done
-echo 'press any key to quit'
-read -p '> '
+cat > $web_dir/certificate/renew_cert.bash <<EOF
+cd $web_dir/certificate
+python ./acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir $web_dir/certificate/challenges/ > /tmp/signed.crt || exit
+wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > intermediate.pem
+cat /tmp/signed.crt intermediate.pem > $web_dir/certificate/chained.pem
+service nginx reload
+EOF
+# (crontab -u $current_user -l ; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash >/dev/null 2 >> /var/log/renew_cert_error.log") | crontab -u $current_user -
+# nginx reload need root privilege,so the renew task need to be added in root's crontab
+(crontab -l ; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash >/dev/null 2 >> /var/log/renew_cert_error.log") | crontab -
+echo "create renewal certificate task succ!"
+read -p 'press any key to quit'
 exit 0
