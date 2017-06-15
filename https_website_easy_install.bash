@@ -148,7 +148,7 @@ service nginx reload
 EOF
 # (crontab -u $current_user -l ; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash >/dev/null 2 >> /var/log/renew_cert_error.log") | crontab -u $current_user -
 # nginx reload need root privilege,so the renew task need to be added in root's crontab
-(crontab -l; echo -e "1 1 1 * * bash $web_dir/certificate/renew_cert.bash >/dev/null 2 >> /var/log/renew_cert_error.log\n") | crontab -
+(crontab -l; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash >/dev/null 2 >> /var/log/renew_cert_error.log") | crontab -
 echo "create renewal certificate task succ!"
 read -p 'press any key to quit'
 exit 0
