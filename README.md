@@ -1,9 +1,9 @@
 # https_website_easy_install
-one command to generate https website on nginx
+one command to generate https website on nginx.All you need to do is input your domains and set your web directory according the terminal prompt.
 
 ### Usage
 
-- install nginx on linux
+- Step 1:install nginx on linux
 
   - ubuntu/debian
 
@@ -19,7 +19,7 @@ one command to generate https website on nginx
 
     ​
 
-- download this script
+- Step 2:download this script
 
   ``` 
   $ wget https://git.io/vHQLm -O https_website_easy_install.bash
@@ -27,7 +27,7 @@ one command to generate https website on nginx
 
   ​
 
-- generate https website on your linux server
+- Step 3:generate https website on your linux server
 
   ```
   $ sudo bash https_website_easy_install.bash
