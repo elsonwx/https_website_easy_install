@@ -1,5 +1,5 @@
 # https_website_easy_install
-one command to generate https website on nginx.All you need to do is input your domains and set your web directory according the terminal prompt.
+one command to generate https website on nginx.All you need to do is input your domain names and set your web directory according the terminal prompt.
 
 ### Usage
 

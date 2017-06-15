@@ -12,8 +12,8 @@ check_ip "$PUBLIC_IP" || PUBLIC_IP=$(wget -t 3 -T 15 -qO- http://ipv4.icanhazip.
 check_ip "$PUBLIC_IP" || exiterr "Cannot find your server ip address"
 
 echo "your server ip is:${PUBLIC_IP}"
-echo "please input your website domain which has been resolved to $PUBLIC_IP"
-echo "if you want to binding more than one domain,you can split them using space"
+echo "please input your website domain name which has been resolved to $PUBLIC_IP"
+echo "if you want to binding more than one domain name,you can split them using space"
 read -p "> " web_domains
 # TODO check the domain resolve dig +short domain
 domain_length=0
