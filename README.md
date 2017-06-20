@@ -30,6 +30,18 @@ one command to generate https website on nginx.All you need to do is input your 
   ```
 
 
+
+
+### Notes
+
+if you just want to generate a http website,you can download the `http_website_easy_install.bash` instead.
+
+```
+$ wget https://git.io/vQfud -O http_website_easy_install.bash
+```
+
+
+
 ### Issues
 
 #### Error: create the http website failed,please view the issue of github doc
