@@ -92,34 +92,36 @@ server {
     rewrite ^(.*) https://\$host\$1 permanent;
 }
 server {
-        listen 443;
-        server_name $web_domains;
-        root $web_dir;
-        index index.html index.htm index.php;
-        ssl on;
-        ssl_certificate $web_dir/certificate/chained.pem;
-        ssl_certificate_key $web_dir/certificate/domain.key;
-        ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-        ssl_ciphers ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA;
-        ssl_session_cache shared:SSL:50m;
-        ssl_prefer_server_ciphers on;
+    listen 443;
+    server_name $web_domains;
+    root $web_dir;
+    index index.html index.htm index.php;
+    ssl on;
+    ssl_certificate $web_dir/certificate/chained.pem;
+    ssl_certificate_key $web_dir/certificate/domain.key;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA;
+    ssl_session_cache shared:SSL:50m;
+    ssl_prefer_server_ciphers on;
 
-        location /.well-known/acme-challenge/ {
-                alias $web_dir/certificate/challenges/;
-                try_files \$uri =404;
-        }
-        location /download {
-                autoindex on;
-                autoindex_exact_size off;
-                autoindex_localtime on;
-        }
+    location /.well-known/acme-challenge/ {
+            alias $web_dir/certificate/challenges/;
+            try_files \$uri =404;
+    }
+    location /download {
+            autoindex on;
+            autoindex_exact_size off;
+            autoindex_localtime on;
+    }
 }
 EOF
+if [[ ! -f $web_dir/index.html ]]; then
 cat > $web_dir/index.html << EOF
 generate https website succssfully<br/>
 this is the index.html of $web_first_domain <br/>
 yout can visit this page from $web_domains
 EOF
+fi
 # current_user=$USER
 # current_user=$(id -un) not work for sudo
 current_user=$(who am i|awk '{print $1}')

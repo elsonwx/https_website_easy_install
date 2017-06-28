@@ -64,10 +64,12 @@ server {
     }
 }
 EOF
+if [[ ! -f $web_dir/index.html ]]; then
 cat > $web_dir/index.html << EOF
 generate http website succssfully<br/>
 this is the index.html of $web_names <br/>
 EOF
+fi
 # current_user=$USER
 # current_user=$(id -un) not work for sudo
 current_user=$(who am i|awk '{print $1}')
