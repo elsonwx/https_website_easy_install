@@ -48,7 +48,7 @@ $ wget https://git.io/vQfud -O http_website_easy_install.bash
 
 SELinux cause the nginx 403 error
 
-The SELinux mode may be opened in centos/redhat 6.6 and later,you will fail in the first step to establish a http website.you can check whethe the SELinux is enabled in your server by exec `sestatus -v` command.this error can be solved by closing the SELinux simply,you can close the SELinux and restart your server
+The SELinux mode may be opened in centos/redhat 6.6 and later,you will fail in the first step to establish a http website.You can check whether the SELinux is enabled in your server through execute `sestatus -v` command.this error can be solved by closing the SELinux simply,you can close the SELinux and restart your server
 
 ```
 $ sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
@@ -62,13 +62,13 @@ https://stackoverflow.com/a/26228135
 https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/#gs.iz_rbNA
 
 
-### screenshot
+### Screenshot
 
 ![screenshot](screenshot/20170613.gif)
 
 
 
-###  inspired
+###  Inspired
 
 [Let's Encrypt](https://letsencrypt.org)
 
