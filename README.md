@@ -1,6 +1,11 @@
 # https_website_easy_install
 one command to generate https website on nginx.All you need to do is input your domain names and set your web directory according the terminal prompt.
 
+### Prerequisites
+
+- Port 80 and port 443 has been allowed in your server's firewall rule.
+- Your linux server has python environment(some cloud platform's vps has no python preinstalled,e.g. aws ec2)
+
 ### Usage
 
 - Step 1: install nginx on linux
@@ -44,10 +49,9 @@ $ wget https://git.io/vQfud -O http_website_easy_install.bash
 
 ### Issues
 
-#### Check List
+#### No crontab error
 
-- Port 80 and port 443 has been allowed in your server's filewall rule.
-- Your linux server has python environment(some cloud platform's vps has no python preinstalled,e.g. aws ec2)
+This script will create a crontab task to renew your ssl certificate on the 1st of every month.If your server has no crontab,Please install it.(e.g. bandwagonhost minimal ubuntu server,`sudo apt-get install cron` )
 
 #### SELinux cause the nginx 403 error
 
