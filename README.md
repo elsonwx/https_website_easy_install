@@ -44,9 +44,12 @@ $ wget https://git.io/vQfud -O http_website_easy_install.bash
 
 ### Issues
 
-#### Error: create the http website failed,please view the issue of github doc
+#### Check List
 
-SELinux cause the nginx 403 error
+- Port 80 and port 443 has been allowed in your server's filewall rule.
+- Your linux server has python environment(some cloud platform has no python preinstalled,e.g. aws ec2)
+
+#### SELinux cause the nginx 403 error
 
 The SELinux mode may be opened in centos/redhat 6.6 and later,you will fail in the first step to establish a http website.You can check whether the SELinux is enabled in your server through execute `sestatus -v` command.this error can be solved by closing the SELinux simply,you can close the SELinux and restart your server
 
