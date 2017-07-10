@@ -47,7 +47,7 @@ $ wget https://git.io/vQfud -O http_website_easy_install.bash
 #### Check List
 
 - Port 80 and port 443 has been allowed in your server's filewall rule.
-- Your linux server has python environment(some cloud platform has no python preinstalled,e.g. aws ec2)
+- Your linux server has python environment(some cloud platform's vps has no python preinstalled,e.g. aws ec2)
 
 #### SELinux cause the nginx 403 error
 
