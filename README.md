@@ -67,6 +67,16 @@ https://stackoverflow.com/a/26228135
 
 https://www.nginx.com/blog/nginx-se-linux-changes-upgrading-rhel-6-6/#gs.iz_rbNA
 
+#### CentOS/RedHat No package nginx available
+
+you should enable the **EPEL**(*Extra Packages for Enterprise Linux*) repository or install nginx by other ways.
+
+[How to enable EPEL repository](https://www.liquidweb.com/kb/enable-epel-repository/)
+
+[Amazon EC2 enable EPEL](https://aws.amazon.com/cn/premiumsupport/knowledge-center/ec2-enable-epel/)
+
+
+
 
 ### Screenshot
 
