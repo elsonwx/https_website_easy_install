@@ -75,7 +75,30 @@ you should enable the **EPEL**(*Extra Packages for Enterprise Linux*) repository
 
 [Amazon EC2 enable EPEL](https://aws.amazon.com/cn/premiumsupport/knowledge-center/ec2-enable-epel/)
 
+#### Firewalls Issues
 
+- Vultr CentOS7 firewalls
+
+  https://www.vultr.com/docs/using-firewalld-to-manage-your-firewall-on-centos-7
+
+  ```
+  firewall-cmd --zone=public --add-port=80/tcp --permanent
+  firewall-cmd --zone=public --add-port=443/tcp --permanent
+  systemctl restart  firewalld
+  ```
+
+
+- AWS EC2 Security Groups
+
+  http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html
+
+- Google Cloud Firewall rules
+
+  https://cloud.google.com/compute/docs/vpc/using-firewalls
+
+- Aliyun Security Groups
+
+  https://help.aliyun.com/document_detail/25471.html?spm=5176.100241.0.0.SK8N6Y
 
 
 ### Screenshot
