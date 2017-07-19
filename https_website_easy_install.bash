@@ -2,6 +2,7 @@
 python_command=''
 if command -v python > /dev/null 2>&1; then
     echo 'python environment check succ..'
+    python_command=python
 else
     if command -v python3 > /dev/null 2>&1; then
         echo 'your python command is python3'
