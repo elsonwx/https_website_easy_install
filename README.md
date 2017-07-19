@@ -4,7 +4,6 @@ one command to generate https website on nginx.All you need to do is input your 
 ### Prerequisites
 
 - Port 80 and port 443 has been allowed in your server's firewall rule.
-- Your linux server has python environment(some cloud platform's vps has no python preinstalled,e.g. aws ec2)
 
 ### Usage
 

@@ -1,4 +1,18 @@
 #!/bin/bash
+python_command=''
+if command -v python > /dev/null 2>&1; then
+    echo 'python environment check succ..'
+else
+    if command -v python3 > /dev/null 2>&1; then
+        echo 'your python command is python3'
+        python_command=python3
+    else
+        echo 'your server has no python environment,now install python for you'
+        apt-get -y install python || yum -y install python
+        echo 'python install succ..'
+        python_command=python
+    fi
+fi 
 exiterr()  {
     echo "Error: $1" >&2;
     exit 1; 
@@ -81,7 +95,7 @@ server {
 EOF
 service  nginx restart
 wget https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py
-python acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir $web_dir/certificate/challenges > ./signed.crt || exiterr "create the http website failed,please view the issue of github doc"
+$python_command acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir $web_dir/certificate/challenges > ./signed.crt || exiterr "create the http website failed,please view the issue of github doc"
 #NOTE: For nginx, you need to append the Let's Encrypt intermediate cert to your cert
 wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > intermediate.pem
 cat signed.crt intermediate.pem > chained.pem
@@ -143,7 +157,7 @@ do
 done
 cat > $web_dir/certificate/renew_cert.bash <<EOF
 cd $web_dir/certificate
-python ./acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir $web_dir/certificate/challenges/ > /tmp/signed.crt || exit
+$python_command ./acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir $web_dir/certificate/challenges/ > /tmp/signed.crt || exit
 wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > intermediate.pem
 cat /tmp/signed.crt intermediate.pem > $web_dir/certificate/chained.pem
 service nginx reload
