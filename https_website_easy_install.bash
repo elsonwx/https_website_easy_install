@@ -163,10 +163,15 @@ wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > inter
 cat /tmp/signed.crt intermediate.pem > $web_dir/certificate/chained.pem
 service nginx reload
 EOF
+if command -v crontab > /dev/null 2>&1; then
+else
+    echo 'no crontab program,now install for you'
+    apt-get -y install cron || yum -y install cron
+fi 
 # (crontab -u $current_user -l ; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash >> /var/log/renew_cert_error.log 2 >> /var/log/renew_cert.log") | crontab -u $current_user -
-# echo -e "\n1 1 1 * * root bash $web_dir/certificate/renew_cert.bash >> /var/log/renew_cert_error.log 2 >> /var/log/renew_cert.log" >> /etc/crontab
+echo "1 1 1 * * root bash $web_dir/certificate/renew_cert.bash >> /var/log/renew_cert_error.log 2 >> /var/log/renew_cert.log" >> /etc/crontab
 # nginx reload need root privilege,so the renew task need to be added in root's crontab
-(crontab -l; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash > /var/log/renew_cert_stdout.log 2 > /var/log/renew_cert_stderr.log") | crontab -
+#(crontab -l; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash > /var/log/renew_cert_stdout.log 2 > /var/log/renew_cert_stderr.log") | crontab -
 echo "create renewal certificate task succ!"
 read -p 'press any key to quit'
 exit 0
