@@ -48,10 +48,6 @@ $ wget https://git.io/vQfud -O http_website_easy_install.bash
 
 ### Issues
 
-#### No crontab error
-
-This script will create a crontab task to renew your ssl certificate on the 1st of every month.If your server has no crontab,Please install it.(e.g. bandwagonhost minimal ubuntu server,`sudo apt-get install cron` )
-
 #### SELinux cause the nginx 403 error
 
 The SELinux mode may be opened in centos/redhat 6.6 and later,you will fail in the first step to establish a http website.You can check whether the SELinux is enabled in your server through execute `sestatus -v` command.this error can be solved by closing the SELinux simply,you can close the SELinux and restart your server

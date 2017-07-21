@@ -14,6 +14,12 @@ else
         python_command=python
     fi
 fi 
+if command -v openssl > /dev/null 2>&1; then
+    echo 'openssl check succ..'
+else
+    echo 'no openssl,now install for you'
+    apt-get -y install openssl || yum -y install openssl
+fi 
 exiterr()  {
     echo "Error: $1" >&2;
     exit 1; 
@@ -98,7 +104,7 @@ service  nginx restart
 wget --no-check-certificate https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py
 $python_command acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir $web_dir/certificate/challenges > ./signed.crt || exiterr "create the http website failed,please view the issue of github doc"
 #NOTE: For nginx, you need to append the Let's Encrypt intermediate cert to your cert
-wget --no-check-certificate -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > intermediate.pem
+wget --no-check-certificate  https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem -O intermediate.pem
 cat signed.crt intermediate.pem > chained.pem
 cat > $nginx_config_dir"/conf.d/"$nginx_web_config_file <<EOF
 server {
@@ -164,6 +170,7 @@ cat /tmp/signed.crt intermediate.pem > $web_dir/certificate/chained.pem
 service nginx reload
 EOF
 if command -v crontab > /dev/null 2>&1; then
+    echo 'crontab check succ..'
 else
     echo 'no crontab program,now install for you'
     apt-get -y install cron || yum -y install cron
