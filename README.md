@@ -24,7 +24,7 @@ one command to generate https website on nginx.All you need to do is input your 
 - Step 2: download this script
 
   ``` 
-  $ wget https://git.io/vHQLm -O https_website_easy_install.bash
+  $ wget --no-check-certificate https://git.io/vHQLm -O https_website_easy_install.bash
   ```
 
 - Step 3: generate https website on your linux server
