@@ -95,7 +95,7 @@ server {
 }
 EOF
 service  nginx restart
-wget https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py
+wget --no-check-certificate https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py
 $python_command acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir $web_dir/certificate/challenges > ./signed.crt || exiterr "create the http website failed,please view the issue of github doc"
 #NOTE: For nginx, you need to append the Let's Encrypt intermediate cert to your cert
 wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > intermediate.pem
