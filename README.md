@@ -38,6 +38,8 @@ one command to generate https website on nginx.All you need to do is input your 
 
 ### Notes
 
+**This script will set a cron task to update the certificate on the 1st of every month,so you do not have to worry about the free certificate would be expired.**
+
 if you just want to generate a http website,you can download the `http_website_easy_install.bash` instead.
 
 ```
