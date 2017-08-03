@@ -50,6 +50,10 @@ one command to generate https website on nginx.All you need to do is input your 
   $ sed -i 's/4096/2048/g' https_website_easy_install.bash
   ```
 
+- If you want to use chinese domain,you need to [convert chinese domain to punycode](http://www.jb51.net/article/101397.htm),then when you are asking to input the domain name by this script, just input the punnycode.e.g.[https://王祥.我爱你](https://xn--qbyu8j.xn--6qq986b3xl),the punnycode is `xn--qbyu8j.xn--6qq986b3xl`
+
+
+
 ### Issues
 
 - #### SELinux cause the nginx 403 error
