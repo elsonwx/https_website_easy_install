@@ -54,10 +54,6 @@ if [[ ! "$web_dir" == /* ]]; then
 	web_dir=$(pwd)"/"$web_dir
 fi
 echo "your web directory will be "$web_dir
-mkdir -p ${web_dir}"/certificate/challenges"
-chmod -R 755 $web_dir
-web_first_parent_dir="/"$(echo $web_dir|cut -d "/" -f2)
-chmod -R o+x $web_first_parent_dir
 echo "please input the nginx config dir"
 echo "you can carrige return if it's default /etc/nginx"
 read -p "> " nginx_config_dir
@@ -80,6 +76,10 @@ read -p "> " confirm
 if [[  $confirm -eq 2 ]]; then
     exit 0
 fi
+mkdir -p ${web_dir}"/certificate/challenges"
+chmod -R 755 $web_dir
+web_first_parent_dir="/"$(echo $web_dir|cut -d "/" -f2)
+chmod -R o+x $web_first_parent_dir
 cd $web_dir"/certificate"
 # Create a Let's Encrypt account private key
 openssl genrsa 4096 > account.key
