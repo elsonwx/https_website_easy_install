@@ -36,9 +36,7 @@ one command to generate https website on nginx.All you need to do is input your 
 
 ### Notes
 
-- Nginx needs some permissions for your website directory,so it's better not to put your website under your $HOME directory.
-
-- This script will set a cron task to update the certificate on the 1st of every month,so you do not have to worry about the free certificate would be expired.
+- This script will set a cron task to update the certificate on the 01:01 am of the random day of every month,so you do not have to worry about the free certificate would be expired.
 
 - If you just want to generate a http website,you can download the `http_website_easy_install.bash` instead.
 
