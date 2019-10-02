@@ -30,8 +30,11 @@ if [[ ! "$web_dir" == /* ]]; then
 fi
 echo "your web directory will be "$web_dir
 mkdir -p ${web_dir}
-web_first_parent_dir="/"$(echo $web_dir|cut -d "/" -f2)
-chmod -R o+x $web_first_parent_dir
+cur_chmod_dir=web_dir
+while [[ $cur_chmod_dir != / ]]; do
+    chmod o+x "$cur_chmod_dir"
+    cur_chmod_dir=$(dirname "$cur_chmod_dir")
+done
 echo "please input the nginx config dir"
 echo "you can carrige return if it's default /etc/nginx"
 read -p "> " nginx_config_dir
