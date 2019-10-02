@@ -179,7 +179,8 @@ else
     apt-get -y install cron || yum -y install cron
 fi 
 # (crontab -u $current_user -l ; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash >> /var/log/renew_cert_error.log 2 >> /var/log/renew_cert.log") | crontab -u $current_user -
-echo "1 1 1 * * root bash $web_dir/certificate/renew_cert.bash >> /var/log/renew_cert_error.log 2 >> /var/log/renew_cert.log" >> /etc/crontab
+random_day=$((RANDOM % (28 - 1) + 1))
+echo "1 1 "$random_day" * * root bash $web_dir/certificate/renew_cert.bash >> /var/log/renew_cert_error.log 2 >> /var/log/renew_cert.log" >> /etc/crontab
 # nginx reload need root privilege,so the renew task need to be added in root's crontab
 #(crontab -l; echo "1 1 1 * * bash $web_dir/certificate/renew_cert.bash > /var/log/renew_cert_stdout.log 2 > /var/log/renew_cert_stderr.log") | crontab -
 echo "create renewal certificate task succ!"
