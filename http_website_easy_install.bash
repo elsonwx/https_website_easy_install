@@ -30,7 +30,7 @@ if [[ ! "$web_dir" == /* ]]; then
 fi
 echo "your web directory will be "$web_dir
 mkdir -p ${web_dir}
-cur_chmod_dir=web_dir
+cur_chmod_dir=$web_dir
 while [[ $cur_chmod_dir != / ]]; do
     chmod o+x "$cur_chmod_dir"
     cur_chmod_dir=$(dirname "$cur_chmod_dir")

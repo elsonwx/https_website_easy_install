@@ -77,7 +77,7 @@ if [[  $confirm -eq 2 ]]; then
     exit 0
 fi
 mkdir -p ${web_dir}"/certificate/challenges"
-cur_chmod_dir=web_dir
+cur_chmod_dir=$web_dir
 while [[ $cur_chmod_dir != / ]]; do
     chmod o+x "$cur_chmod_dir"
     cur_chmod_dir=$(dirname "$cur_chmod_dir")
