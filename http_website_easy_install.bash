@@ -88,5 +88,3 @@ your website directory is $web_dir
 your nginx config file is $nginx_config_dir/conf.d/$nginx_web_config_file
 you can visit your website through $web_names
 EOF
-read -p 'press any key to quit'
-exit 0
