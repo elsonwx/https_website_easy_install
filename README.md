@@ -1,21 +1,21 @@
 # https_website_easy_install
-one command to generate https website on nginx.All you need to do is input your domain names and set your web directory according the terminal prompt.
+one command to generate https website on Nginx.All you need to do is input your domain names and set your web directory according the terminal prompt.
 
 ### Prerequisites
 
-- **Port 80 and port 443 has been allowed in your server's firewall rule.**
+- **Port 80 and port 443 have been allowed in your server's firewall rule.**
 
 ### Usage
 
-- Step 1: install nginx on linux
+- Step 1: install Nginx on Linux
 
-  - ubuntu/debian
+  - Ubuntu/Debian
 
     ```shell
     sudo apt-get update && sudo apt-get -y install nginx
     ```
 
-  - centos/redhat
+  - Centos/Redhat
 
     ```shell
     sudo yum -y update && sudo yum -y install nginx
@@ -44,7 +44,7 @@ one command to generate https website on nginx.All you need to do is input your 
   wget https://git.io/vQfud -O http_website_easy_install.bash
   ```
 
-- Some cloud platform's loading balance service has key length limit,e.g. Google Cloud loading balance only support RSA-2048.So if you want to deploy the ssl certificate on the loading balance.You can modify the key length before running this script.
+- Some cloud platform's loading balance service has a key length limit,e.g. Google Cloud loading balance only support RSA-2048.So if you want to deploy the ssl certificate on the loading balance.You can modify the key length before running this script.
 
   ```shell
   sed -i 's/4096/2048/g' https_website_easy_install.bash
@@ -56,7 +56,7 @@ one command to generate https website on nginx.All you need to do is input your 
 
 ### Issues
 
-- #### SELinux cause the nginx 403 error
+- #### SELinux cause the Nginx 403 error
 
   The SELinux mode may be opened in centos/redhat 6.6 and later,you will fail in the first step to establish a http website.You can check whether the SELinux is enabled in your server through execute `sestatus -v` command.this error can be solved by closing the SELinux simply,you can close the SELinux and restart your server
 
