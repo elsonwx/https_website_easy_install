@@ -115,11 +115,10 @@ server {
     rewrite ^(.*) https://\$host\$1 permanent;
 }
 server {
-    listen 443;
+    listen 443 ssl;
     server_name $web_domains;
     root $web_dir;
     index index.html index.htm index.php;
-    ssl on;
     ssl_certificate $web_dir/certificate/chained.pem;
     ssl_certificate_key $web_dir/certificate/domain.key;
     ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
